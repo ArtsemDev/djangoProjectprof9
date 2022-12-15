@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Post
+from .models import Category, Post, Contact
 
 
 @admin.action(description='опубликовать')
@@ -64,7 +64,17 @@ class PostAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('email', 'name')
+
+
+class ContactManager(ContactAdmin):
+    readonly_fields = ('email', 'name', 'message', 'date_created')
+
+
 # admin.site.register(Category, CategoryAdmin)
 # admin.site.register(Post, PostAdmin)
 manager.register(Category, CategoryAdmin)
 manager.register(Post, PostAdmin)
+manager.register(Contact, ContactManager)

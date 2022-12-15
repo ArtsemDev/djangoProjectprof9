@@ -74,3 +74,19 @@ class Post(models.Model):
         verbose_name = 'пост'
         verbose_name_plural = 'посты'
         ordering = ['date_created']
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=64, verbose_name='имя')
+    email = models.EmailField(verbose_name='почта')
+    message = models.CharField(max_length=1024, verbose_name='сообщение')
+    date_created = models.DateTimeField(default=now, verbose_name='дата обращения')
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        db_table = 'blog_contacts'
+        verbose_name = 'контакт'
+        verbose_name_plural = 'контакты'
+        ordering = ['date_created']

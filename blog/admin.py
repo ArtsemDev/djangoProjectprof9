@@ -58,7 +58,7 @@ class PostAdmin(admin.ModelAdmin):
         (
             'Дополнительное',
             {
-                'fields': ('date_created', 'author', 'slug')
+                'fields': ('date_created', 'author', 'slug', 'image')
             }
         )
     )

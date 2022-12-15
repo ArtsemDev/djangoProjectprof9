@@ -1,7 +1,12 @@
 {% extends "blog/base.html" %}
+{% load static %}
 
 {% block title %}
 CONTACT
+{% endblock %}
+
+{% block image %}
+style="background-image: url('{% static 'assets/img/contact-bg.jpg' %}')"
 {% endblock %}
 
 {% block heading %}

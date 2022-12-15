@@ -54,6 +54,12 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         verbose_name='автор'
     )
+    image = models.ImageField(
+        upload_to='post',
+        verbose_name='картинка',
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
         return self.title

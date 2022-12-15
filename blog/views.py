@@ -26,5 +26,9 @@ def contact(request: HttpRequest):
     return render(request, 'blog/contact.html', {'contact_form': form})
 
 
+def about(request: HttpRequest):
+    return render(request, 'blog/about.html')
+
+
 def error404(request, exception):
     return render(request, 'blog/error404.html')

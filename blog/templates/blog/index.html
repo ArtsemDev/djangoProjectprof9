@@ -25,6 +25,18 @@ style="background-image: url('{% static 'assets/img/home-bg.jpg' %}')"
 
             {% include "blog/form_contact.html" %}
 
+            <form method="post">
+                {% csrf_token %}
+                <label>
+                    <input name="form_type" value="email_form" hidden>
+                </label>
+                <div class="form-floating">
+                    {{ my_form.email }}
+                    <label for="email">Email address</label>
+                </div>
+                <br>
+                <button class="btn btn-primary text-uppercase" type="submit">SEND</button>
+            </form>
         </div>
     </div>
 </div>

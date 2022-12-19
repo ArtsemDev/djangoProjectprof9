@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, TemplateView
 
-from .forms import ContactForm
+from .forms import ContactForm, MyForm
 from .models import Post, Contact
 
 
@@ -28,13 +28,18 @@ class PostListView(BaseMixin, ListView):
         context['heading'] = 'MIXIN HEADING'
         context['subheading'] = 'mixin subheading'
         context['form'] = ContactForm()
+        context['my_form'] = MyForm()
         context.update(self.context)
         return context
 
     def post(self, request: HttpRequest):
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
+        match request.POST.get('form_type'):
+            case 'contact_form':
+                form = ContactForm(request.POST)
+                if form.is_valid():
+                    form.save()
+            case 'email_form':
+                print(request.POST.get('email'))
         return self.get(request=request)
 
 
